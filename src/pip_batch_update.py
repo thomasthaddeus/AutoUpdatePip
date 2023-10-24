@@ -13,10 +13,10 @@ Yields:
     None: This script does not contain a generator for external consumption.
 """
 
-import subprocess
 import os
-import logging
 import sys
+import subprocess
+import logging
 from log_utils import logrotate
 
 def setup_logging():
