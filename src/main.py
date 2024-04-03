@@ -1,6 +1,11 @@
 #  main.py
 
-from .pip_batch_update import batcher, get_outdated_packages, update_packages, setup_logging
+from .pip_batch_update import (
+    batcher,
+    get_outdated_packages,
+    update_packages,
+    setup_logging
+)
 
 def main():
     """
