@@ -17,7 +17,8 @@ import os
 import sys
 import subprocess
 import logging
-from log_utils import logrotate
+from .utils import logrotate, get_help, get_pip_cmds, get_pip_commands, get_pip_help_for_command
+
 
 def setup_logging():
     """
@@ -61,7 +62,6 @@ def setup_logging():
     # Call logrotate function after setting up logging
     logrotate()
 
-
 def get_outdated_packages():
     """
     Return a list of outdated pip packages.
@@ -84,7 +84,6 @@ def get_outdated_packages():
         logging.error("Error occurred while fetching outdated packages.")
         return []
 
-
 def update_packages(packages):
     """
     Update the given list of pip packages and log any errors.
@@ -101,8 +100,6 @@ def update_packages(packages):
         logging.error(
             "Error occurred while updating packages: %s", ', '.join(packages)
         )
-
-
 
 def batcher(iterable, n=1):
     """
@@ -122,38 +119,3 @@ def batcher(iterable, n=1):
         return
     yield iterable[:n]
     yield from batcher(iterable[n:], n)
-
-
-def main():
-    """
-    The main execution function of the script.
-
-    Sets up logging, identifies and updates outdated pip packages in batches,
-    and then displays the difference in outdated packages before and after the
-    update.
-    """
-    setup_logging()
-
-    initial_outdated = get_outdated_packages()
-
-    # Update packages in batches of 10 using the recursive batcher
-    for batch in batcher(initial_outdated, 10):
-        update_packages(batch)
-
-    final_outdated = get_outdated_packages()
-
-    # Find the difference
-    still_outdated = set(final_outdated) - set(initial_outdated)
-    newly_updated = set(initial_outdated) - set(final_outdated)
-
-    print("Still Outdated:")
-    for package in still_outdated:
-        print(package)
-
-    print("\nNewly Updated:")
-    for package in newly_updated:
-        print(package)
-
-
-if __name__ == "__main__":
-    main()

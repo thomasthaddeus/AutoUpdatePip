@@ -1,4 +1,4 @@
-"""log_utils.py
+"""utils/log_utils.py
 
 The log_utils module provides a utility function to manage log rotation in a specified directory.
 
@@ -16,7 +16,9 @@ import os
 import glob
 import shutil
 
-def logrotate(log_dir='../logs/', max_logs=5):
+LOG_DIR='../logs/'
+
+def logrotate(log_dir=LOG_DIR, max_logs=5):
     """
     Rotate log files in the specified directory.
 

@@ -1,4 +1,4 @@
-"""get_pip_cmds.py
+"""utils/get_pip_cmds.py
 This script provides utilities for fetching pip command listings and obtaining
 help documentation for each command.
 
@@ -66,7 +66,7 @@ def get_help():
         all_pip_help_texts.append(help_text)
 
     # Saving all the help texts to a file
-    with open("pip_commands_help.txt", mode="w", encoding="utf-8") as f:
+    with open("../data/pip_help_commands.txt", mode="w", encoding="utf-8") as f:
         f.write(
             "\n\n========================================\n\n".join(all_pip_help_texts)
         )

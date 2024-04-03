@@ -5,22 +5,43 @@ This utility provides a streamlined way to manage and update your pip packages i
 ## Directory Structure
 
 ```bash
-.
-├── LICENSE
-├── README.md
-├── docs
-│   ├── pip_config.md
-│   └── powershell_profile.md
-├── scripts
-│   ├── pip_update.ps1
-│   └── pip_update.sh
-└── src
-    ├── __init__.py
-    ├── logs
-    ├── pip_batch_update.py
-    └── utils
-        ├── get_pip_cmds.py
-        └── log_utils.py
+|   .gitignore
+|   LICENSE
+|   pyproject.toml
+|   README.md
+|   requirements.txt
+|
++---docs
+|       pip_config.md
+|       powershell_profile.md
+|       TODO.md
+|
++---out
+|       output.txt
+|
+\---src
+    |   main.py
+    |   pip_batch_update.py
+    |   version.py
+    |   __init__.py
+    |
+    +---data
+    |       pip_help_commands.txt
+    |
+    +---logs
+    |       log_0.txt
+    |       log_1.txt
+    |
+    +---scripts
+    |       build_and_push.sh
+    |       create_structure.sh
+    |       pip_update.ps1
+    |       pip_update.sh
+    |
+    \---utils
+            get_pip_cmds.py
+            log_utils.py
+            __init__.py
 ```
 
 ## Installation
